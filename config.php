@@ -1,3 +1,3 @@
 <?php
 // ubah mvcsimple sesuai dengan namaprojectmu
-define("BASE_URL", "mvcsimple");
+define("BASE_URL", "readed-backend");
