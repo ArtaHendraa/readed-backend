@@ -69,15 +69,23 @@ class ApiController extends Model
     }
     public function getAllData()
     {
-        $data = $this->getAll("dummy");
-        echo json_encode($data);
-        exit;
+        try {
+            $data = $this->getAll("dummy");
+            echo json_encode($data);
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 
     public function get($data)
     {
-        $data = $this->getSingleById("dummy", "name", "$data");
-        echo json_encode($data);
-        exit;
+        try {
+            $data = $this->getSingleById("dummy", "name", "$data");
+            echo json_encode($data);
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
 }
