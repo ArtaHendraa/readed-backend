@@ -9,7 +9,6 @@ $Router = new Router();
 // ini_set('display_errors', 0);
 
 // ngecek url ada /api atau ngga
-// isi === 0 kalau semisal ada bug
 
 $detect_api = explode("/", trim($_SERVER['REQUEST_URI'], "/"));
 if (isset($detect_api[0]) && $detect_api[0] === 'api' || isset($detect_api[1]) && $detect_api[1] === 'api') {
@@ -28,26 +27,26 @@ if (isset($detect_api[0]) && $detect_api[0] === 'api' || isset($detect_api[1]) &
         return (strpos($_SERVER['REQUEST_URI'], "/$base_url") === 0) ? "/$base_url/" : '';
     }
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- <link rel="stylesheet" href="/public/css/output.css"> -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
-        <title></title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/output.css">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    <title></title>
 
-    </head>
+</head>
 
-    <body class="font-poppins">
-        <?php
+<body class="font-poppins">
+    <?php
         $Router->run();
         ?>
-        <script></script>
-    </body>
+    <script></script>
+</body>
 
-    </html>
+</html>
 <?php
 }
 ?>

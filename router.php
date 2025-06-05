@@ -81,6 +81,10 @@ class Router
     {
         $err_api = ['message' => 'error not found'];
 
+        if ($method === "") {
+            $method = "index";
+        }
+
         if (empty($method) || !method_exists($controller, $method)) {
             http_response_code(404);
             echo json_encode($err_api);
