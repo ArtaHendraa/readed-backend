@@ -47,12 +47,16 @@ class Model extends Database
     }
     public function create($table, ...$data)
     {
-
-        foreach ($data as $rows) {
-            $datanya = implode(",", $rows);
-            $query = "INSERT INTO $table VALUES (" . $datanya . ")";
+        try {
+            foreach ($data as $rows) {
+                $datanya = implode(",", $rows);
+                $query = "INSERT INTO $table VALUES (" . $datanya . ")";
+                mysqli_query($this->connect, $query);
+            }
+            return true;
+        } catch (\Throwable $th) {
+            return false;
         }
-        mysqli_query($this->connect, $query);
     }
     public function createSpecify($table, ...$args)
     {
@@ -67,8 +71,9 @@ class Model extends Database
         $query = "UPDATE $table SET $field='$data' WHERE $target='$target_value'";
         $result = mysqli_query($this->connect, $query);
         if (!$result) {
-            return "error";
+            return false;
         }
+        return true;
     }
 
     public function delete($table, $target, $target_value)
@@ -77,7 +82,8 @@ class Model extends Database
         $query = "DELETE FROM $table WHERE $target='$target_value'";
         $result = mysqli_query($this->connect, $query);
         if (!$result) {
-            echo "error";
+            return false;
         }
+        return true;
     }
 }
