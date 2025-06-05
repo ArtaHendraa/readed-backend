@@ -13,9 +13,9 @@ class Database
         $this->host = "localhost";
         $this->username = "root";
         $this->password = "";
-        $this->db = "readed";
+        $this->db = "toko";
 
-        $this->connect = mysqli_connect($this->host, $this->username, $this->password, $this->db);
+        $this->connect = new mysqli($this->host, $this->username, $this->password, DB_NAME);
 
         if (!$this->connect) {
             die("Gagal koneksi ke database: " . mysqli_connect_error());
