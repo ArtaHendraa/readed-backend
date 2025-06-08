@@ -26,11 +26,18 @@ class ApiController extends Model
                 break;
         }
     }
+    public function handlePost()
+    {
+        $name = "khana";
+        $id = 3;
+        $this->postCurl($name, $id);
+    }
     private function post()
     {
         $data = json_decode(file_get_contents("php://input"), true);
+        $id = $data['id'];
         $name = $data['name'];
-        $insert = $this->create("dummy", ["'$name'"]);
+        $insert = $this->create("dummy", ["$id", "'$name'"]);
         if ($insert) {
             echo json_encode(["Message" => "berhasil"]);
             exit;
@@ -69,15 +76,48 @@ class ApiController extends Model
     }
     public function getAllData()
     {
-        $data = $this->getAll("dummy");
-        echo json_encode($data);
-        exit;
+        createPublicAPI($this->getAll("dummy"));
+        echo "juancok";
     }
 
     public function get($data)
     {
-        $data = $this->getSingleById("dummy", "name", "$data");
-        echo json_encode($data);
-        exit;
+        try {
+            $data = $this->getSingleById("dummy", "name", "$data");
+            echo json_encode($data);
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+
+    private function postCurl($name, $id)
+    {
+        $data = [
+            "id" => $id,
+            "name" => $name
+        ];
+        $jsonData = json_encode($data);
+        echo "<pre>" . $jsonData . "</pre>";
+
+        // inisialisasi curl
+        $ch = curl_init("http://readed-backend.test/api");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true); // set method menjadi post
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData); //set value post sesuai dengan variable $jsonData
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Accept: appliction/json'
+        ]); // Penting, karena buat ngasi tau bahwa bakal ngirim input berupa json
+
+        $response = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            echo 'Error: ' . curl_error($ch);
+            return false;
+        } else {
+            echo 'Response API : ' . $response;
+        }
+        curl_close($ch);
     }
 }

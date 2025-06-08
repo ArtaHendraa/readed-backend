@@ -10,15 +10,19 @@ class Model extends Database
     public function getAll($table)
     {
         // Ambil semua data dari tabel
-        $query = "SELECT * FROM $table";
-        $hasil = mysqli_query($this->connect, $query);
-        $data = [];
-        if (mysqli_num_rows($hasil) > 0) {
-            while ($row = mysqli_fetch_assoc($hasil)) {
-                $data[] = $row;
+        try {
+            $query = "SELECT * FROM $table";
+            $hasil = mysqli_query($this->connect, $query);
+            $data = [];
+            if (mysqli_num_rows($hasil) > 0) {
+                while ($row = mysqli_fetch_assoc($hasil)) {
+                    $data[] = $row;
+                }
             }
+            return $data;
+        } catch (\Throwable $th) {
+            return false;
         }
-        return $data;
     }
 
     public function getAllById($table, $field, $id)
@@ -55,15 +59,21 @@ class Model extends Database
             }
             return true;
         } catch (\Throwable $th) {
+            echo $th;
             return false;
         }
     }
     public function createSpecify($table, ...$args)
     {
-        $target = implode(",", $args[0]);
-        $data = implode(",", $args[1]);
-        $query = "INSERT INTO $table ($target) VALUES ($data)";
-        mysqli_query($this->connect, $query);
+        try {
+            $target = implode(",", $args[0]);
+            $data = implode(",", $args[1]);
+            $query = "INSERT INTO $table ($target) VALUES ($data)";
+            mysqli_query($this->connect, $query);
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }
     }
     public function updateSingle($table, $field, $data, $target, $target_value)
     {
