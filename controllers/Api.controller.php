@@ -26,7 +26,7 @@ class ApiController extends Model
                 break;
         }
     }
-    public function cobaCurl()
+    public function handlePost()
     {
         $name = "khana";
         $id = 3;
@@ -76,13 +76,7 @@ class ApiController extends Model
     }
     public function getAllData()
     {
-        try {
-            $data = $this->getAll("dummy");
-            echo json_encode($data);
-            return true;
-        } catch (\Throwable $th) {
-            return false;
-        }
+        createPublicAPI($this->getAll("dummy"));
     }
 
     public function get($data)
@@ -113,7 +107,7 @@ class ApiController extends Model
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             'Content-Type: application/json',
             'Accept: appliction/json'
-        ]);
+        ]); // Penting, karena buat ngasi tau bahwa bakal ngirim input berupa json
 
         $response = curl_exec($ch);
 

@@ -60,6 +60,7 @@ class Model extends Database
             return true;
         } catch (\Throwable $th) {
             echo $th;
+            return false;
         }
     }
     public function createSpecify($table, ...$args)
