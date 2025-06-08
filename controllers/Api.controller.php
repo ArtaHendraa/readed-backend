@@ -77,6 +77,7 @@ class ApiController extends Model
     public function getAllData()
     {
         createPublicAPI($this->getAll("dummy"));
+        echo "juancok";
     }
 
     public function get($data)
