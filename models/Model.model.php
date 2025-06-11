@@ -96,4 +96,14 @@ class Model extends Database
         }
         return true;
     }
+
+    public function customQuery($query)
+    {
+        try {
+            $result = mysqli_query($this->connect, $query);
+            return $result;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
 }
