@@ -52,6 +52,7 @@ class ApiController extends Model
         $data = json_decode(file_get_contents("php://input"), true);
         $id = $data['id'];
         $name = $data['name'];
+        $table = $data['table'];
         $update = $this->updateSingle("dummy", "name", "$name", "id", "$id");
         if ($update) {
             echo json_encode(['Message' => 'success']);
@@ -76,10 +77,24 @@ class ApiController extends Model
     }
     public function getAllData()
     {
-        createPublicAPI($this->getAll("dummy"));
-        echo "juancok";
+        echo createPublicAPI($this->getAll("dummy"));
     }
 
+    public function article()
+    {
+        $status = "OK";
+        $data = createPublicAPI($this->getAll("articles"));
+
+        if (!$data) {
+            $status = "Kontol";
+        }
+        $result = [
+            "Message" => "Success get article API",
+            "Status" => $status,
+            "Data" => $data
+        ];
+        return json_encode($result, JSON_PRETTY_PRINT);
+    }
     public function get($data)
     {
         try {
@@ -90,6 +105,7 @@ class ApiController extends Model
             return false;
         }
     }
+
 
     private function postCurl($name, $id)
     {
