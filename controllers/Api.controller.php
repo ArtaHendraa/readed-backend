@@ -37,7 +37,8 @@ class ApiController extends Model
         $data = json_decode(file_get_contents("php://input"), true);
         $id = $data['id'];
         $name = $data['name'];
-        $insert = $this->create("dummy", ["$id", "'$name'"]);
+        $table = $data['table'];
+        $insert = $this->create($table, ["$id", "'$name'"]);
         if ($insert) {
             echo json_encode(["Message" => "berhasil"]);
             exit;
@@ -53,7 +54,7 @@ class ApiController extends Model
         $id = $data['id'];
         $name = $data['name'];
         $table = $data['table'];
-        $update = $this->updateSingle("dummy", "name", "$name", "id", "$id");
+        $update = $this->updateSingle($table, "name", "$name", "id", "$id");
         if ($update) {
             echo json_encode(['Message' => 'success']);
             exit;
@@ -66,7 +67,8 @@ class ApiController extends Model
     {
         $data = json_decode(file_get_contents("php://input"), true);
         $id = $data['id'];
-        $delete = $this->delete("dummy", "id", "$id");
+        $table = $data['table'];
+        $delete = $this->delete($table, "id", "$id");
         if ($delete) {
             echo json_encode(['Message' => 'success']);
             exit;
@@ -75,11 +77,6 @@ class ApiController extends Model
             exit;
         }
     }
-    public function getAllData()
-    {
-        echo createPublicAPI($this->getAll("dummy"));
-    }
-
     public function article()
     {
         $status = "OK";
@@ -91,14 +88,15 @@ class ApiController extends Model
         $result = [
             "Message" => "Success get article API",
             "Status" => $status,
-            "Data" => $data
+            "Data" => array_splice($data, 0, 10)
         ];
         return json_encode($result, JSON_PRETTY_PRINT);
     }
     public function get($data)
     {
         try {
-            $data = $this->getSingleById("dummy", "name", "$data");
+            $table = $data['table'];
+            $data = $this->getSingleById($table, "name", "$data");
             echo json_encode($data);
             return true;
         } catch (\Throwable $th) {
