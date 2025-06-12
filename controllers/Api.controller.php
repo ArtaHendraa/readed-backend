@@ -32,6 +32,7 @@ class ApiController extends Model
         $id = 3;
         $this->postCurl($name, $id);
     }
+
     private function post()
     {
         $data = json_decode(file_get_contents("php://input"), true);
@@ -77,22 +78,31 @@ class ApiController extends Model
             exit;
         }
     }
-    public function article()
+    public function articles()
     {
-        $status = "OK";
-        $data = createPublicAPI($this->getAll("articles"));
+        $articles = $this->getAll("articles");
 
-        if (!$data) {
-            $status = "Kontol";
+        if (!$articles || !is_array($articles) || count($articles) === 0) {
+            return json_encode([
+                "message" => "Failed get articles data",
+                "status" => "FAILED",
+                "data" => null
+            ]);
         }
-        $result = [
-            "Message" => "Success get article API",
-            "Status" => $status,
-            "Data" => array_splice($data, 0, 10)
-        ];
-        return json_encode($result, JSON_PRETTY_PRINT);
+
+        return json_encode([
+            "message" => "Success get articles data",
+            "status" => "OK",
+            "data" => $articles
+        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
-    public function get($data)
+    // End Endpoint get all data
+
+
+
+
+    // Start Endpoint get each data
+    public function user($data)
     {
         try {
             $table = $data['table'];
@@ -104,6 +114,24 @@ class ApiController extends Model
         }
     }
 
+    public function article($data)
+    {
+        try {
+            $result = $this->getSingleById("articles", "id", $data);
+
+            if ($result) {
+                echo json_encode($result);
+            } else {
+                http_response_code(404);
+                echo json_encode(["message" => "Data not found"]);
+            }
+        } catch (\Throwable $th) {
+            http_response_code(500);
+            echo json_encode(["message" => "Internal server error", "error" => $th->getMessage()]);
+            return false;
+        }
+    }
+    // End Endpoint get each data
 
     private function postCurl($name, $id)
     {
