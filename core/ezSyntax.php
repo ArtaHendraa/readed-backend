@@ -31,7 +31,7 @@ function createPublicAPI($value)
 {
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
-    echo json_encode($value, JSON_PRETTY_PRINT);
+    return $value;
 }
 function changeTitle($title)
 {

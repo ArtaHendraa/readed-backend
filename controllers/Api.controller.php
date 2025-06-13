@@ -38,7 +38,8 @@ class ApiController extends Model
         $data = json_decode(file_get_contents("php://input"), true);
         $id = $data['id'];
         $name = $data['name'];
-        $insert = $this->create("dummy", ["$id", "'$name'"]);
+        $table = $data['table'];
+        $insert = $this->create($table, ["$id", "'$name'"]);
         if ($insert) {
             echo json_encode(["Message" => "berhasil"]);
             exit;
@@ -54,7 +55,7 @@ class ApiController extends Model
         $id = $data['id'];
         $name = $data['name'];
         $table = $data['table'];
-        $update = $this->updateSingle("dummy", "name", "$name", "id", "$id");
+        $update = $this->updateSingle($table, "name", "$name", "id", "$id");
         if ($update) {
             echo json_encode(['Message' => 'success']);
             exit;
@@ -67,7 +68,8 @@ class ApiController extends Model
     {
         $data = json_decode(file_get_contents("php://input"), true);
         $id = $data['id'];
-        $delete = $this->delete("dummy", "id", "$id");
+        $table = $data['table'];
+        $delete = $this->delete($table, "id", "$id");
         if ($delete) {
             echo json_encode(['Message' => 'success']);
             exit;
@@ -75,26 +77,6 @@ class ApiController extends Model
             echo json_encode(['Message' => 'failed']);
             exit;
         }
-    }
-
-    // Start Endpoint get all data
-    public function users()
-    {
-        $articles = $this->getAll("users");
-
-        if (!$articles || !is_array($articles) || count($articles) === 0) {
-            return json_encode([
-                "message" => "Failed get users data",
-                "status" => "FAILED",
-                "data" => null
-            ]);
-        }
-
-        return json_encode([
-            "message" => "Success get users data",
-            "status" => "OK",
-            "data" => $articles
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
     public function articles()
     {
@@ -115,26 +97,20 @@ class ApiController extends Model
         ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
     // End Endpoint get all data
-    
-    
-    
-    
+
+
+
+
     // Start Endpoint get each data
     public function user($data)
     {
         try {
-            $result = $this->getSingleById("users", "user_id", $data);
-
-            if ($result) {
-                echo json_encode($result);
-            } else {
-                http_response_code(404);
-                echo json_encode(["message" => "Data not found"]);
-            }
-          } catch (\Throwable $th) {
-          http_response_code(500);
-          echo json_encode(["message" => "Internal server error", "error" => $th->getMessage()]);
-          return false;
+            $table = $data['table'];
+            $data = $this->getSingleById($table, "name", "$data");
+            echo json_encode($data);
+            return true;
+        } catch (\Throwable $th) {
+            return false;
         }
     }
 
@@ -149,10 +125,10 @@ class ApiController extends Model
                 http_response_code(404);
                 echo json_encode(["message" => "Data not found"]);
             }
-          } catch (\Throwable $th) {
-          http_response_code(500);
-          echo json_encode(["message" => "Internal server error", "error" => $th->getMessage()]);
-          return false;
+        } catch (\Throwable $th) {
+            http_response_code(500);
+            echo json_encode(["message" => "Internal server error", "error" => $th->getMessage()]);
+            return false;
         }
     }
     // End Endpoint get each data

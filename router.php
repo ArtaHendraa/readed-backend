@@ -61,7 +61,13 @@ class Router
             return error();
         }
 
-        return ($param === "") ? $controller->$method() : $controller->$method($param);
+        try {
+            return ($param === "") ? $controller->$method() : $controller->$method($param);
+        } catch (\Throwable $th) {
+
+            // ubah pas udah selesai projectnya
+            echo "server error " . $th->getMessage();
+        }
     }
 
     private function handleView($viewName, $param = "")

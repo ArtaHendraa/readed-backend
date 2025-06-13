@@ -1,7 +1,12 @@
 <?php
 $middleware = new Middleware();
-// $middleware->ifAuth();
+$middleware->ifAuth();
 function home()
-{ ?>
-    <h1>This an madafaking hom</h1>
+{
+?>
+<?php
+    foreach ($_SESSION['userData'] as $data) {
+        echo $data . "<br>";
+    }
+?>
 <?php }
