@@ -64,9 +64,7 @@ class Router
         try {
             return ($param === "") ? $controller->$method() : $controller->$method($param);
         } catch (\Throwable $th) {
-
-            // ubah pas udah selesai projectnya
-            echo "server error " . $th->getMessage();
+            echo "tai";
         }
     }
 
@@ -80,7 +78,12 @@ class Router
 
         include_once($viewFile);
 
-        return ($param === "") ? $viewName() : $viewName($param);
+
+        try {
+            return ($param === "") ? $viewName() : $viewName($param);
+        } catch (\Throwable $th) {
+            echo "error : " . $th->getMessage();
+        }
     }
 
     private function handleApi($controller, $method, $param)
