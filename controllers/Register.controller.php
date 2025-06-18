@@ -30,13 +30,12 @@ class RegisterController extends Model
     private function sendData($username, $email, $password)
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
-        try {
-            $this->createSpecify("users", ["username", "email", "password"], ["'$username'", "'$email'", "'$password'"]);
-            return $this->status = [
-                "Status" => "Registrasi berhasil!"
-            ];
-        } catch (\Throwable $th) {
-            echo "error: " . $th->getMessage();
-        }
+        $this->createSpecify("salahtable", ["username", "email", "password"], ["'$username'", "'$email'", "'$password'"]);
+
+        $this->getAll("users");
+
+        return $this->status = [
+            "Status" => "Registrasi berhasil!"
+        ];
     }
 }
