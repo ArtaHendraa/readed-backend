@@ -10,19 +10,15 @@ class Model extends Database
     public function getAll($table)
     {
         // Ambil semua data dari tabel
-        try {
-            $query = "SELECT * FROM $table";
-            $hasil = mysqli_query($this->connect, $query);
-            $data = [];
-            if (mysqli_num_rows($hasil) > 0) {
-                while ($row = mysqli_fetch_assoc($hasil)) {
-                    $data[] = $row;
-                }
+        $query = "SELECT * FROM $table";
+        $hasil = mysqli_query($this->connect, $query);
+        $data = [];
+        if (mysqli_num_rows($hasil) > 0) {
+            while ($row = mysqli_fetch_assoc($hasil)) {
+                $data[] = $row;
             }
-            return $data;
-        } catch (\Throwable $th) {
-            return false;
         }
+        return $data;
     }
 
     public function getAllById($table, $field, $id)
@@ -35,8 +31,6 @@ class Model extends Database
                 $data[] = $row;
             }
             return $data;
-        } else {
-            return false;
         }
     }
     public function getSingleById($table, $field, $id)
@@ -45,65 +39,40 @@ class Model extends Database
         $result =  mysqli_query($this->connect, $query);
         if (mysqli_num_rows($result) > 0) {
             return mysqli_fetch_assoc($result);
-        } else {
-            return false;
         }
     }
     public function create($table, ...$data)
     {
-        try {
-            foreach ($data as $rows) {
-                $datanya = implode(",", $rows);
-                $query = "INSERT INTO $table VALUES (" . $datanya . ")";
-                mysqli_query($this->connect, $query);
-            }
-            return true;
-        } catch (\Throwable $th) {
-            echo $th;
-            return false;
+        foreach ($data as $rows) {
+            $datanya = implode(",", $rows);
+            $query = "INSERT INTO $table VALUES (" . $datanya . ")";
+            mysqli_query($this->connect, $query);
         }
     }
     public function createSpecify($table, ...$args)
     {
-        try {
-            $target = implode(",", $args[0]);
-            $data = implode(",", $args[1]);
-            $query = "INSERT INTO $table ($target) VALUES ($data)";
-            mysqli_query($this->connect, $query);
-            return true;
-        } catch (\Throwable $th) {
-            return false;
-        }
+        $target = implode(",", $args[0]);
+        $data = implode(",", $args[1]);
+        $query = "INSERT INTO $table ($target) VALUES ($data)";
+        mysqli_query($this->connect, $query);
     }
     public function updateSingle($table, $field, $data, $target, $target_value)
     {
         // Update data berdasarkan ID
         $query = "UPDATE $table SET $field='$data' WHERE $target='$target_value'";
-        $result = mysqli_query($this->connect, $query);
-        if (!$result) {
-            return false;
-        }
-        return true;
+        mysqli_query($this->connect, $query);
     }
 
     public function delete($table, $target, $target_value)
     {
         // Hapus data berdasarkan ID
         $query = "DELETE FROM $table WHERE $target='$target_value'";
-        $result = mysqli_query($this->connect, $query);
-        if (!$result) {
-            return false;
-        }
-        return true;
+        mysqli_query($this->connect, $query);
     }
 
     public function customQuery($query)
     {
-        try {
-            $result = mysqli_query($this->connect, $query);
-            return $result;
-        } catch (\Throwable $th) {
-            return false;
-        }
+        $result = mysqli_query($this->connect, $query);
+        return $result;
     }
 }
