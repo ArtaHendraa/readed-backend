@@ -72,11 +72,7 @@ class Model extends Database
 
     public function customQuery($query)
     {
-        try {
-            $result = mysqli_query($this->connect, $query);
-            return $result;
-        } catch (\Throwable $th) {
-            return false;
-        }
+        $result = mysqli_query($this->connect, $query);
+        return $result;
     }
 }

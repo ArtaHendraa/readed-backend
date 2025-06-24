@@ -3,6 +3,7 @@ include_once("core/ezSyntax.php");
 include_once("router.php");
 include_once("core/middleware.php");
 include_once("config.php");
+include_once('views\components\navbar.php');
 $base_url = BASE_URL;
 $Router = new Router();
 // buat hide error pas udah production
@@ -33,14 +34,14 @@ if (isset($detect_api[0]) && $detect_api[0] === 'api' || isset($detect_api[1]) &
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/output.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    <link rel="stylesheet" href="resources\css\style.css">
     <title></title>
 
 </head>
 
 <body class="font-poppins">
     <?php
+        navbar();
         $Router->run();
         ?>
     <script></script>

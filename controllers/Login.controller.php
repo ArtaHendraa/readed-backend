@@ -16,23 +16,26 @@ class LoginController extends Model
     private function auth($username, $password)
     {
         $query = $this->customQuery("SELECT * FROM users WHERE username='$username' OR email='$username'");
-        if (mysqli_num_rows($query) > 0) {
-            $check_user = mysqli_fetch_assoc($query);
-        }
-        if (!$check_user) {
-            $this->status = [
-                "Message" => "Username not found"
+        $check_user = mysqli_fetch_assoc($query);
+        if ($check_user === NULL) {
+            return $this->status = [
+                "Pesan" => "Login gagal",
+                "Status" => false
             ];
-            exit();
         }
         if ($check_user['password'] == password_verify($password, $check_user['password'])) {
             session_start();
-            $_SESSION['userData'] = $check_user;
+            $_SESSION['user_data'] = $check_user;
             $this->status = [
-                "Message" => "Berhasil login njeng"
+                "Pesan" => "Berhasil login njeng",
+                "Status" => true
             ];
             setcookie("username", "$username");
-            header("Location: /");
+        } else {
+            return $this->status = [
+                "Pesan" => "Password salah",
+                "Status" => false
+            ];
         }
     }
 }

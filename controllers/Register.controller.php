@@ -30,7 +30,7 @@ class RegisterController extends Model
     private function sendData($username, $email, $password)
     {
         $password = password_hash($password, PASSWORD_DEFAULT);
-        $this->createSpecify("salahtable", ["username", "email", "password"], ["'$username'", "'$email'", "'$password'"]);
+        $this->createSpecify("users", ["username", "email", "password"], ["'$username'", "'$email'", "'$password'"]);
 
         $this->getAll("users");
 

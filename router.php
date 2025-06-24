@@ -61,11 +61,7 @@ class Router
             return error();
         }
 
-        try {
-            return ($param === "") ? $controller->$method() : $controller->$method($param);
-        } catch (\Throwable $th) {
-            echo "tai";
-        }
+        return ($param === "") ? $controller->$method() : $controller->$method($param);
     }
 
     private function handleView($viewName, $param = "")
@@ -79,11 +75,7 @@ class Router
         include_once($viewFile);
 
 
-        try {
-            return ($param === "") ? $viewName() : $viewName($param);
-        } catch (\Throwable $th) {
-            echo "error : " . $th->getMessage();
-        }
+        return ($param === "") ? $viewName() : $viewName($param);
     }
 
     private function handleApi($controller, $method, $param)
