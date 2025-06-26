@@ -37,3 +37,20 @@ function changeTitle($title)
 {
     echo "<script>document.title = '$title'</script>";
 }
+
+include_once("models\Model.model.php");
+class checkUser extends Model
+{
+    public function check()
+    {
+        session_start();
+        $userid = $_SESSION['user_data']['user_id'];
+        $query = $this->customQuery("SELECT user_id FROM users where user_id='$userid'");
+        if (mysqli_num_rows($query) > 0) {
+            echo "usernya ada";
+        } else {
+            echo "usernya dah dihapus";
+            session_destroy();
+        }
+    }
+}

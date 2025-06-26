@@ -33,7 +33,7 @@ class LoginController extends Model
             setcookie("username", "$username");
         } else {
             return $this->status = [
-                "Pesan" => "Password salah",
+                "Pesan" => "Who the fuck are you?",
                 "Status" => false
             ];
         }
