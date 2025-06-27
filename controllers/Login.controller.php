@@ -1,6 +1,6 @@
 <?php
-include_once("models/Model.model.php");
-include_once("views\login.view.php");
+require_once("models/Model.model.php");
+require_once("views\login.view.php");
 class LoginController extends Model
 {
     private $status;
@@ -23,7 +23,7 @@ class LoginController extends Model
                 "Status" => false
             ];
         }
-        if ($check_user['password'] == password_verify($password, $check_user['password'])) {
+        if (password_verify($password, $check_user['password'])) {
             session_start();
             $_SESSION['user_data'] = $check_user;
             $this->status = [
