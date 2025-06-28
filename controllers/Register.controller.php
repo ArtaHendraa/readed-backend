@@ -1,6 +1,6 @@
 <?php
-include_once('views/register.view.php');
-include_once('models/Model.model.php');
+require_once('views/register.view.php');
+require_once('models/Model.model.php');
 class RegisterController extends Model
 {
     private $status;
@@ -17,12 +17,15 @@ class RegisterController extends Model
         $check_email = $this->getSingleById("users", "email", "$email");
         if ($check_username) {
             return $this->status = [
-                "Status" => "Username sudah digunakan!"
+                "Pesan" => "Username sudah digunakan!",
+                "Status" => false
+
             ];
         }
         if ($check_email) {
             return $this->status = [
-                "Status" => "Email sudah digunakan!"
+                "Pesan" => "Email sudah digunakan!",
+                "Status" => false
             ];
         }
         $this->sendData($username, $email, $password);
@@ -35,7 +38,8 @@ class RegisterController extends Model
         $this->getAll("users");
 
         return $this->status = [
-            "Status" => "Registrasi berhasil!"
+            "Pesan" => "Register berhasil",
+            "Status" => true
         ];
     }
 }

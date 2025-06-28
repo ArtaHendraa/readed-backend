@@ -1,17 +1,14 @@
 <?php
-$middleware = new Middleware();
-$middleware->ifAuth();
 function home()
 {
-
-    var_dump($_SESSION['user_data'])
+    $check = new checkUser();
+    $check->check();
+    if (!isset($_SESSION['user_data'])) {
+        header('Location: /login');
+        exit;
+    }
 ?>
-<<<<<<< HEAD
-
-=======
-<?php
-
-
-?>
->>>>>>> f35bcb7e848d360235c9eabfd791a50b8edbfd54
+    <p><?= $_SESSION['user_data']['user_id'] ?></p>
+    <p><?= $_SESSION['user_data']['username'] ?></p>
+    <p><?= $_SESSION['user_data']['email'] ?></p>
 <?php }
