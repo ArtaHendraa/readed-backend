@@ -1,5 +1,5 @@
 <?php
-require_once("models\Model.model.php");
+require_once("models/Model.model.php");
 require_once("views/editor.php");
 class BlogController extends Model
 {

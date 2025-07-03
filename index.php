@@ -3,7 +3,7 @@ include_once("core/ezSyntax.php");
 include_once("router.php");
 include_once("core/middleware.php");
 include_once("config.php");
-include_once('views\components\navbar.php');
+include_once('views/components/navbar.php');
 $base_url = BASE_URL;
 $Router = new Router();
 // buat hide error pas udah production

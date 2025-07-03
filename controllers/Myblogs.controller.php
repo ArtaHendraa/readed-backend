@@ -1,6 +1,6 @@
 <?php
-require_once("models\Model.model.php");
-require_once("views\myblogs.view.php");
+require_once("models/Model.model.php");
+require_once("views/myblogs.view.php");
 class myblogsController extends Model
 {
     public function index()
