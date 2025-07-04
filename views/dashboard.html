@@ -1,50 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home - Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-  </head>
 
-  <body class="font-poppins">
-    <main class="flex h-screen">
-      <!-- sidebar -->
-      <aside
-        class="fixed left-0 top-0 h-screen w-[300px] bg-white border px-5 overflow-y-auto"
-      >
-        <!-- Logo -->
-        <h1 class="mt-8 mb-10 text-4xl font-bold uppercase font-[cursive]">
-          Readed
-        </h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
 
-        <!-- Section: Dashboard -->
-        <a
-          href="#"
-          class="flex items-center gap-3 text-base bg-[#3A0CA3] text-white font-medium px-4 py-3 rounded-lg mb-6"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-5 h-5 color-white"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-            />
-          </svg>
+<body class="font-poppins">
+  <main class="flex h-screen">
+    <!-- sidebar -->
+    <aside class="fixed left-0 top-0 h-screen w-[300px] bg-white border px-5 overflow-y-auto">
+      <!-- Logo -->
+      <h1 class="mt-8 mb-10 text-4xl font-bold uppercase font-[cursive]">
+        Readed
+      </h1>
 
-          <span>Dashboard</span>
-        </a>
-
+      <!-- Section: Dashboard -->
+      <a href="../views/dashboard.html"
+        class="flex items-center gap-3 text-base bg-[#3A0CA3] text-white font-medium px-4 py-3 rounded-lg mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          class="w-5 h-5 color-white">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
         <!-- Section: Article -->
         <div class="mb-6">
           <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
@@ -110,282 +91,281 @@
                 />
               </svg>
 
-              <span>Edit post</span>
-            </a>
-          </div>
-        </div>
+        <span>Dashboard</span>
+      </a>
 
-        <!-- Section: Category -->
-        <div class="mb-6">
-          <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
-            Category
-          </h2>
-          <a
-            href="#"
-            class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-5 h-5"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
-              />
+      <!-- Section: Article -->
+      <div class="mb-6">
+        <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
+          Article
+        </h2>
+        <div class="flex flex-col gap-3">
+          <a href="../views/createpost.html"
+            class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <span>Create post</span>
+          </a>
+          <a href="../views/myposts.html"
+            class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+            </svg>
+            <span>My posts</span>
+          </a>
+          <a href="../views/editpost.html"
+            class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
             </svg>
 
-            <span>Manage category</span>
+            <span>Edit post</span>
           </a>
         </div>
+      </div>
 
-        <!-- Section: Account -->
-        <div class="mb-10">
-          <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
-            Account
-          </h2>
-          <a
-            href="#"
-            class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="w-5 h-5"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-              />
-            </svg>
+      <!-- Section: Category -->
+      <div class="mb-6">
+        <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
+          Category
+        </h2>
+        <a href="../views/categoryform.html"
+          class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+          </svg>
 
-            <span>Account setting</span>
-          </a>
+          <span>Manage category</span>
+        </a>
+      </div>
+
+      <!-- Section: Account -->
+      <div class="mb-10">
+        <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
+          Account
+        </h2>
+        <a href="../views/profile.html"
+          class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+          </svg>
+
+          <span>Account setting</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- content -->
+    <section class="ml-[300px] flex-1 overflow-y-auto h-screen">
+      <!-- Navbar -->
+      <nav class="w-full border-b border-gray-300 px-6 py-3 flex items-center justify-between">
+        <h1 class="text-xl font-bold">Dashboard</h1>
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-gray-800 font-semibold">username</span>
+          <img src="../public/profile/pp.jpg" alt="Profile" class="w-10 h-10 rounded-full object-cover" />
         </div>
-      </aside>
-
-      <!-- content -->
-      <section class="ml-[300px] flex-1 overflow-y-auto h-screen">
-        <!-- Navbar -->
-        <nav
-          class="w-full border-b border-gray-300 px-6 py-3 flex items-center justify-between"
-        >
-          <h1 class="text-xl font-bold">Manage Category</h1>
-          <div class="flex items-center gap-3">
-            <span class="text-sm text-gray-800 font-semibold">username</span>
-            <img
-              src="../public/profile/pp.jpg"
-              alt="Profile"
-              class="w-10 h-10 rounded-full object-cover"
-            />
-          </div>
-        </nav>
-        <div class="w-full p-6 mx-auto space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="col-span-1 md:col-span-1">
-              <div class="border border-gray-300 rounded-md p-4 mb-4">
-                <h2 class="font-bold text-lg leading-none">
-                  Welcome Username<span>👋</span>
-                </h2>
-              </div>
-              <div class="bg-[#2E2AE6] rounded-md p-6">
-                <h3 class="text-white font-semibold text-base mb-1">
-                  Total Post
-                </h3>
-                <p class="text-white font-extrabold text-4xl leading-none">
-                  109
-                </p>
-              </div>
+      </nav>
+      <div class="w-full p-6 mx-auto space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="col-span-1 md:col-span-1">
+            <div class="border border-gray-300 rounded-md p-4 mb-4">
+              <h2 class="font-bold text-lg leading-none">
+                Welcome Username<span>👋</span>
+              </h2>
             </div>
-            <div
-              class="col-span-1 md:col-span-2 bg-[#F5F8FF] rounded-md border border-[#D1D9E6]"
-            >
-              <div class="flex justify-between items-center px-4 pt-4">
-                <h3 class="font-bold text-base">Draft Posts</h3>
-              </div>
-              <table
-                class="w-full text-xs text-[#6B7A99] border-collapse border border-[#D1D9E6]"
-              >
-                <thead class="border-b border-[#D1D9E6] bg-[#F5F8FF]">
-                  <tr>
-                    <th class="text-left px-3 py-2 font-semibold">TITLE</th>
-                    <th class="text-left px-3 py-2 font-semibold">CATEGORY</th>
-                    <th class="text-left px-3 py-2 font-semibold">
-                      CREATED AT
-                    </th>
-                    <th class="text-left px-3 py-2 font-semibold">ACTIONS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="border-b border-[#D1D9E6] bg-white">
-                    <td class="px-3 py-2 truncate max-w-[180px]">
-                      Kenapa PS5 adalah console...
-                    </td>
-                    <td class="px-3 py-2">Game, Rasis</td>
-                    <td class="px-3 py-2">19-09-2021</td>
-                    <td class="px-3 py-2 flex space-x-2">
-                      <button class="bg-[#FFD97D] rounded px-2 py-1">
-                        <i class="fas fa-eye text-[#6B7A99]"></i>
-                      </button>
-                      <button class="bg-[#00BFA6] rounded px-2 py-1">
-                        <i class="fas fa-check text-white"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr class="border-b border-[#D1D9E6] bg-white">
-                    <td class="px-3 py-2 truncate max-w-[180px]">
-                      Kenapa PS5 adalah console...
-                    </td>
-                    <td class="px-3 py-2">Game, Rasis</td>
-                    <td class="px-3 py-2">19-09-2021</td>
-                    <td class="px-3 py-2 flex space-x-2">
-                      <button class="bg-[#FFD97D] rounded px-2 py-1">
-                        <i class="fas fa-eye text-[#6B7A99]"></i>
-                      </button>
-                      <button class="bg-[#00BFA6] rounded px-2 py-1">
-                        <i class="fas fa-check text-white"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr class="border-b border-[#D1D9E6] bg-white">
-                    <td class="px-3 py-2 truncate max-w-[180px]">
-                      Kenapa PS5 adalah console...
-                    </td>
-                    <td class="px-3 py-2">Game, Rasis</td>
-                    <td class="px-3 py-2">19-09-2021</td>
-                    <td class="px-3 py-2 flex space-x-2">
-                      <button class="bg-[#FFD97D] rounded px-2 py-1">
-                        <i class="fas fa-eye text-[#6B7A99]"></i>
-                      </button>
-                      <button class="bg-[#00BFA6] rounded px-2 py-1">
-                        <i class="fas fa-check text-white"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div
-                class="bg-[#7B8A99] flex justify-center space-x-2 py-2 rounded-b-md"
-              >
-                <span class="w-3 h-3 rounded-full bg-[#2E2AE6]"></span>
-                <span class="w-3 h-3 rounded-full bg-[#2E2AE6]"></span>
-                <span class="w-3 h-3 rounded-full bg-[#2E2AE6]"></span>
-              </div>
+            <div class="bg-[#2E2AE6] rounded-md p-6">
+              <h3 class="text-white font-semibold text-base mb-1">
+                Total Post
+              </h3>
+              <p class="text-white font-extrabold text-4xl leading-none">
+                109
+              </p>
             </div>
           </div>
-
-          <div></div>
-
-          <div class="bg-white rounded-md border border-[#D1D9E6] p-4">
-            <h4 class="text-xs font-semibold text-[#6B7A99] mb-2">
-              Latest Posts
-            </h4>
-            <table
-              class="w-full text-xs text-[#6B7A99] border-collapse border border-[#D1D9E6]"
-            >
+          <div class="col-span-1 md:col-span-2 bg-[#F5F8FF] rounded-md border border-[#D1D9E6]">
+            <div class="flex justify-between items-center px-4 pt-4">
+              <h3 class="font-bold text-base">Draft Posts</h3>
+            </div>
+            <table class="w-full text-xs text-[#6B7A99] border-collapse border border-[#D1D9E6]">
               <thead class="border-b border-[#D1D9E6] bg-[#F5F8FF]">
                 <tr>
                   <th class="text-left px-3 py-2 font-semibold">TITLE</th>
                   <th class="text-left px-3 py-2 font-semibold">CATEGORY</th>
-                  <th class="text-left px-3 py-2 font-semibold">CREATED AT</th>
-                  <th class="text-left px-3 py-2 font-semibold">STATUS</th>
+                  <th class="text-left px-3 py-2 font-semibold">
+                    CREATED AT
+                  </th>
                   <th class="text-left px-3 py-2 font-semibold">ACTIONS</th>
                 </tr>
               </thead>
               <tbody>
                 <tr class="border-b border-[#D1D9E6] bg-white">
                   <td class="px-3 py-2 truncate max-w-[180px]">
-                    Jancuk pritel pristel pemayo p......
+                    Kenapa PS5 adalah console...
                   </td>
-                  <td class="px-3 py-2">Jawir, Jawa</td>
-                  <td class="px-3 py-2">10-12-2025</td>
-                  <td class="px-3 py-2">Published</td>
+                  <td class="px-3 py-2">Game, Rasis</td>
+                  <td class="px-3 py-2">19-09-2021</td>
                   <td class="px-3 py-2 flex space-x-2">
-                    <button class="bg-[#2E2AE6] rounded px-2 py-1">
-                      <i class="fas fa-pen text-white"></i>
+                    <button class="bg-[#FFD97D] rounded px-2 py-1">
+                      <i class="fas fa-eye text-[#6B7A99]"></i>
                     </button>
-                    <button class="bg-[#FF0044] rounded px-2 py-1">
-                      <i class="fas fa-trash text-white"></i>
+                    <button class="bg-[#00BFA6] rounded px-2 py-1">
+                      <i class="fas fa-check text-white"></i>
                     </button>
                   </td>
                 </tr>
                 <tr class="border-b border-[#D1D9E6] bg-white">
                   <td class="px-3 py-2 truncate max-w-[180px]">
-                    Jancuk pritel pristel pemayo p......
+                    Kenapa PS5 adalah console...
                   </td>
-                  <td class="px-3 py-2">Jawir, Jawa</td>
-                  <td class="px-3 py-2">10-12-2025</td>
-                  <td class="px-3 py-2">Published</td>
+                  <td class="px-3 py-2">Game, Rasis</td>
+                  <td class="px-3 py-2">19-09-2021</td>
                   <td class="px-3 py-2 flex space-x-2">
-                    <button class="bg-[#2E2AE6] rounded px-2 py-1">
-                      <i class="fas fa-pen text-white"></i>
+                    <button class="bg-[#FFD97D] rounded px-2 py-1">
+                      <i class="fas fa-eye text-[#6B7A99]"></i>
                     </button>
-                    <button class="bg-[#FF0044] rounded px-2 py-1">
-                      <i class="fas fa-trash text-white"></i>
+                    <button class="bg-[#00BFA6] rounded px-2 py-1">
+                      <i class="fas fa-check text-white"></i>
                     </button>
                   </td>
                 </tr>
                 <tr class="border-b border-[#D1D9E6] bg-white">
                   <td class="px-3 py-2 truncate max-w-[180px]">
-                    Jancuk pritel pristel pemayo p......
+                    Kenapa PS5 adalah console...
                   </td>
-                  <td class="px-3 py-2">Jawir, Jawa</td>
-                  <td class="px-3 py-2">10-12-2025</td>
-                  <td class="px-3 py-2">Published</td>
+                  <td class="px-3 py-2">Game, Rasis</td>
+                  <td class="px-3 py-2">19-09-2021</td>
                   <td class="px-3 py-2 flex space-x-2">
-                    <button class="bg-[#2E2AE6] rounded px-2 py-1">
-                      <i class="fas fa-pen text-white"></i>
+                    <button class="bg-[#FFD97D] rounded px-2 py-1">
+                      <i class="fas fa-eye text-[#6B7A99]"></i>
                     </button>
-                    <button class="bg-[#FF0044] rounded px-2 py-1">
-                      <i class="fas fa-trash text-white"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="border-b border-[#D1D9E6] bg-white">
-                  <td class="px-3 py-2 truncate max-w-[180px]">
-                    Jancuk pritel pristel pemayo p......
-                  </td>
-                  <td class="px-3 py-2">Jawir, Jawa</td>
-                  <td class="px-3 py-2">10-12-2025</td>
-                  <td class="px-3 py-2">Published</td>
-                  <td class="px-3 py-2 flex space-x-2">
-                    <button class="bg-[#2E2AE6] rounded px-2 py-1">
-                      <i class="fas fa-pen text-white"></i>
-                    </button>
-                    <button class="bg-[#FF0044] rounded px-2 py-1">
-                      <i class="fas fa-trash text-white"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr class="border-b border-[#D1D9E6] bg-white">
-                  <td class="px-3 py-2 truncate max-w-[180px]">
-                    Jancuk pritel pristel pemayo p......
-                  </td>
-                  <td class="px-3 py-2">Jawir, Jawa</td>
-                  <td class="px-3 py-2">10-12-2025</td>
-                  <td class="px-3 py-2">Published</td>
-                  <td class="px-3 py-2 flex space-x-2">
-                    <button class="bg-[#2E2AE6] rounded px-2 py-1">
-                      <i class="fas fa-pen text-white"></i>
-                    </button>
-                    <button class="bg-[#FF0044] rounded px-2 py-1">
-                      <i class="fas fa-trash text-white"></i>
+                    <button class="bg-[#00BFA6] rounded px-2 py-1">
+                      <i class="fas fa-check text-white"></i>
                     </button>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <div class="bg-[#7B8A99] flex justify-center space-x-2 py-2 rounded-b-md">
+              <span class="w-3 h-3 rounded-full bg-[#2E2AE6]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#2E2AE6]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#2E2AE6]"></span>
+            </div>
           </div>
         </div>
-      </section>
-    </main>
-  </body>
+
+        <div></div>
+
+        <div class="bg-white rounded-md border border-[#D1D9E6] p-4">
+          <h4 class="text-xs font-semibold text-[#6B7A99] mb-2">
+            Latest Posts
+          </h4>
+          <table class="w-full text-xs text-[#6B7A99] border-collapse border border-[#D1D9E6]">
+            <thead class="border-b border-[#D1D9E6] bg-[#F5F8FF]">
+              <tr>
+                <th class="text-left px-3 py-2 font-semibold">TITLE</th>
+                <th class="text-left px-3 py-2 font-semibold">CATEGORY</th>
+                <th class="text-left px-3 py-2 font-semibold">CREATED AT</th>
+                <th class="text-left px-3 py-2 font-semibold">STATUS</th>
+                <th class="text-left px-3 py-2 font-semibold">ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-[#D1D9E6] bg-white">
+                <td class="px-3 py-2 truncate max-w-[180px]">
+                  Jancuk pritel pristel pemayo p......
+                </td>
+                <td class="px-3 py-2">Jawir, Jawa</td>
+                <td class="px-3 py-2">10-12-2025</td>
+                <td class="px-3 py-2">Published</td>
+                <td class="px-3 py-2 flex space-x-2">
+                  <button class="bg-[#2E2AE6] rounded px-2 py-1">
+                    <i class="fas fa-pen text-white"></i>
+                  </button>
+                  <button class="bg-[#FF0044] rounded px-2 py-1">
+                    <i class="fas fa-trash text-white"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="border-b border-[#D1D9E6] bg-white">
+                <td class="px-3 py-2 truncate max-w-[180px]">
+                  Jancuk pritel pristel pemayo p......
+                </td>
+                <td class="px-3 py-2">Jawir, Jawa</td>
+                <td class="px-3 py-2">10-12-2025</td>
+                <td class="px-3 py-2">Published</td>
+                <td class="px-3 py-2 flex space-x-2">
+                  <button class="bg-[#2E2AE6] rounded px-2 py-1">
+                    <i class="fas fa-pen text-white"></i>
+                  </button>
+                  <button class="bg-[#FF0044] rounded px-2 py-1">
+                    <i class="fas fa-trash text-white"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="border-b border-[#D1D9E6] bg-white">
+                <td class="px-3 py-2 truncate max-w-[180px]">
+                  Jancuk pritel pristel pemayo p......
+                </td>
+                <td class="px-3 py-2">Jawir, Jawa</td>
+                <td class="px-3 py-2">10-12-2025</td>
+                <td class="px-3 py-2">Published</td>
+                <td class="px-3 py-2 flex space-x-2">
+                  <button class="bg-[#2E2AE6] rounded px-2 py-1">
+                    <i class="fas fa-pen text-white"></i>
+                  </button>
+                  <button class="bg-[#FF0044] rounded px-2 py-1">
+                    <i class="fas fa-trash text-white"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="border-b border-[#D1D9E6] bg-white">
+                <td class="px-3 py-2 truncate max-w-[180px]">
+                  Jancuk pritel pristel pemayo p......
+                </td>
+                <td class="px-3 py-2">Jawir, Jawa</td>
+                <td class="px-3 py-2">10-12-2025</td>
+                <td class="px-3 py-2">Published</td>
+                <td class="px-3 py-2 flex space-x-2">
+                  <button class="bg-[#2E2AE6] rounded px-2 py-1">
+                    <i class="fas fa-pen text-white"></i>
+                  </button>
+                  <button class="bg-[#FF0044] rounded px-2 py-1">
+                    <i class="fas fa-trash text-white"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="border-b border-[#D1D9E6] bg-white">
+                <td class="px-3 py-2 truncate max-w-[180px]">
+                  Jancuk pritel pristel pemayo p......
+                </td>
+                <td class="px-3 py-2">Jawir, Jawa</td>
+                <td class="px-3 py-2">10-12-2025</td>
+                <td class="px-3 py-2">Published</td>
+                <td class="px-3 py-2 flex space-x-2">
+                  <button class="bg-[#2E2AE6] rounded px-2 py-1">
+                    <i class="fas fa-pen text-white"></i>
+                  </button>
+                  <button class="bg-[#FF0044] rounded px-2 py-1">
+                    <i class="fas fa-trash text-white"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
 </html>
