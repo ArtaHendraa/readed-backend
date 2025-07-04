@@ -10,47 +10,87 @@
       rel="stylesheet"
     />
   </head>
+
   <body class="font-poppins">
     <main class="flex h-screen">
       <!-- sidebar -->
       <aside
-        class="fixed left-0 top-0 h-screen w-[350px] bg-[#D9D9D9] px-5 overflow-y-auto"
+        class="fixed left-0 top-0 h-screen w-[300px] bg-white border px-5 overflow-y-auto"
       >
-        <h1 class="mt-8 mb-16 text-6xl font-bold uppercase">logo</h1>
-        <div class="flex flex-col gap-8 capitalize">
-          <a
-            href=""
-            class="flex items-center gap-3 text-xl bg-[#B3B3B3] px-2 py-3 rounded-xl"
-          >
-            <img
-              src="../public/icons/pencil.svg"
-              alt="dashboard-icon"
-              class="w-8 h-8"
-            />
-            <span>create blog</span>
-          </a>
-          <span class="w-full h-1 bg-black"></span>
-          <div class="flex flex-col gap-8">
-            <a href="" class="flex items-center gap-3 text-xl">
-              <img src="../public/icons/home.svg" class="w-8 h-8" />
-              <span>dashboard</span>
+        <!-- Logo -->
+        <h1 class="mt-8 mb-10 text-4xl font-bold uppercase font-[cursive]">
+          Readed
+        </h1>
+
+        <!-- Section: Dashboard -->
+        <a
+          href="#"
+          class="flex items-center gap-3 text-base bg-[#3A0CA3] text-white font-medium px-4 py-3 rounded-lg mb-6"
+        >
+          <img
+            src="../public/icons/home.svg"
+            alt="dashboard-icon"
+            class="w-5 h-5"
+          />
+          <span>Dashboard</span>
+        </a>
+
+        <!-- Section: Article -->
+        <div class="mb-6">
+          <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
+            Article
+          </h2>
+          <div class="flex flex-col gap-3">
+            <a
+              href="#"
+              class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+            >
+              <img src="../public/icons/plus.svg" class="w-5 h-5" />
+              <span>Create post</span>
             </a>
-            <a href="" class="flex items-center gap-3 text-xl">
-              <img
-                src="../public/icons/adjustments-horizonta.svg"
-                class="w-8 h-8"
-              />
-              <span>manage blogs</span>
+            <a
+              href="#"
+              class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+            >
+              <img src="../public/icons/file.svg" class="w-5 h-5" />
+              <span>My posts</span>
             </a>
-            <a href="" class="flex items-center gap-3 text-xl">
-              <img src="../public/icons/user.svg" class="w-8 h-8" />
-              <span>account</span>
-            </a>
-            <a href="" class="flex items-center gap-3 text-xl">
-              <img src="../public/icons/setting.svg" class="w-8 h-8" />
-              <span>settings</span>
+            <a
+              href="#"
+              class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+            >
+              <img src="../public/icons/edit.svg" class="w-5 h-5" />
+              <span>Edit post</span>
             </a>
           </div>
+        </div>
+
+        <!-- Section: Category -->
+        <div class="mb-6">
+          <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
+            Category
+          </h2>
+          <a
+            href="#"
+            class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+          >
+            <img src="../public/icons/folder.svg" class="w-5 h-5" />
+            <span>Manage category</span>
+          </a>
+        </div>
+
+        <!-- Section: Account -->
+        <div class="mb-10">
+          <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
+            Account
+          </h2>
+          <a
+            href="#"
+            class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+          >
+            <img src="../public/icons/user.svg" class="w-5 h-5" />
+            <span>Account setting</span>
+          </a>
         </div>
       </aside>
 
