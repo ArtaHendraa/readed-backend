@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="font-poppins">
+    <main class="flex h-screen">
+      <!-- sidebar -->
+      <aside
+        class="fixed left-0 top-0 h-screen w-[300px] bg-white border px-5 overflow-y-auto"
+      >
+        <!-- Logo -->
+        <h1 class="mt-8 mb-10 text-4xl font-bold uppercase font-[cursive]">
+          Readed
+        </h1>
+
+        <!-- Section: Dashboard -->
+        <a
+          href="#"
+          class="flex items-center gap-3 text-base bg-[#3A0CA3] text-white font-medium px-4 py-3 rounded-lg mb-6"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-5 h-5 color-white"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+            />
+          </svg>
+
+          <span>Dashboard</span>
+        </a>
+
+        <!-- Section: Article -->
+        <div class="mb-6">
+          <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
+            Article
+          </h2>
+          <div class="flex flex-col gap-3">
+            <a
+              href="#"
+              class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4.5v15m7.5-7.5h-15"
+                />
+              </svg>
+              <span>Create post</span>
+            </a>
+            <a
+              href="#"
+              class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                />
+              </svg>
+              <span>My posts</span>
+            </a>
+            <a
+              href="#"
+              class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                />
+              </svg>
+
+              <span>Edit post</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Section: Category -->
+        <div class="mb-6">
+          <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
+            Category
+          </h2>
+          <a
+            href="#"
+            class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+              />
+            </svg>
+
+            <span>Manage category</span>
+          </a>
+        </div>
+
+        <!-- Section: Account -->
+        <div class="mb-10">
+          <h2 class="text-sm font-semibold text-gray-600 uppercase mb-4">
+            Account
+          </h2>
+          <a
+            href="#"
+            class="flex items-center gap-3 text-base text-black hover:text-[#3A0CA3] hover:font-medium"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+              />
+            </svg>
+
+            <span>Account setting</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- content -->
+      <section class="ml-[300px] flex-1 overflow-y-auto h-screen">
+        <!-- Navbar -->
+        <nav
+          class="w-full border-b border-gray-300 px-6 py-3 flex items-center justify-between"
+        >
+          <h1 class="text-xl font-bold">Manage Category</h1>
+          <div class="flex items-center gap-3">
+            <span class="text-sm text-gray-800 font-semibold">username</span>
+            <img
+              src="../public/profile/pp.jpg"
+              alt="Profile"
+              class="w-10 h-10 rounded-full object-cover"
+            />
+          </div>
+        </nav>
+        <div class="space-y-10">
+          <div class="h-[2000px] bg-gray-100">
+            <!-- Form -->
+            <div class="space-y-4 p-12 rounded">
+              <!-- Title Input -->
+              <input
+                type="text"
+                value="GTA V jiggle physic so fucking crazy"
+                class="w-full border-2 font-semibold border-gray-300 rounded p-4 focus:outline-none"
+              />
+              <!-- Description Textarea -->
+              <textarea
+                class="w-full border-2 border-gray-300 rounded p-4 h-70 focus:outline-none"
+                placeholder="simple description about this post"
+              >
+simple description about this post</textarea
+              >
+
+              <!-- File name & Category -->
+              <div class="flex gap-4">
+                <input
+                  type="text"
+                  value="name_file_here.png"
+                  class="w-1/2 mr-2 border-2 border-gray-300 rounded p-2 focus:outline-none"
+                />
+                <select
+                  class="w-1/2 ml-2 border-2 border-gray-300 rounded p-2 focus:outline-none text-gray-500"
+                >
+                  <option selected disabled>Category</option>
+                  <option>Gaming</option>
+                  <option>Technology</option>
+                </select>
+              </div>
+
+              <!-- Rich Text Editor -->
+              <div class="border border rounded">
+                <div id="editor" class="h-40"></div>
+              </div>
+
+              <!-- Buttons -->
+              <div class="flex gap-4 mt-4">
+                <button class="bg-blue-700 text-white px-6 py-2 rounded">
+                  Save & Publish
+                </button>
+                <button class="border border text-blue-700 px-6 py-2 rounded">
+                  Save & Draft
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.min.js"></script>
+    <script>
+      new Quill("#editor", {
+        theme: "snow",
+      });
+    </script>
+  </body>
+</html>
