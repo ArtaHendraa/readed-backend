@@ -1,5 +1,5 @@
 <?php
-require_once("views/createblog.view.php");
+require_once("views/createblog.php");
 require_once("models/Model.model.php");
 session_start();
 class CreateController extends Model
