@@ -1,6 +1,6 @@
 <?php
-require_once("views\profile.view.php");
-require_once("models\Model.model.php");
+require_once("views/profile.view.php");
+require_once("models/Model.model.php");
 class ProfileController extends Model
 {
     private $status;

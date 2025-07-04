@@ -16,7 +16,7 @@ function navbar()
                             class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
                         <a href="/create"
                             class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Create</a>
-                        <a href="/myblogs"
+                        <a href="/blog"
                             class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">List</a>
                         <a href="/category"
                             class="text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Category</a>

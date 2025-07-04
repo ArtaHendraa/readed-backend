@@ -117,7 +117,7 @@ class ApiController extends Model
     public function article($data)
     {
         try {
-            $result = $this->getSingleById("articles", "id", $data);
+            $result = $this->getSingleById("articles", "slug", $data);
 
             if ($result) {
                 echo json_encode($result);

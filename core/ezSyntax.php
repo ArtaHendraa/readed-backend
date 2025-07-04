@@ -38,7 +38,7 @@ function changeTitle($title)
     echo "<script>document.title = '$title'</script>";
 }
 
-include_once("models\Model.model.php");
+include_once("models/Model.model.php");
 class checkUser extends Model
 {
     public function check()
