@@ -1,5 +1,5 @@
 <?php
-function myblogs($data)
+function blog($data)
 {
     if (isset($data)) {
 ?>
@@ -25,7 +25,7 @@ function myblogs($data)
                         foreach ($data as $key) { ?>
                             <tr class="bg-white border-b hover:bg-gray-50">
                                 <td class="p-4">
-                                    <img src="<?= $key['image_url'] ?>" alt="Gambar Artikel 1"
+                                    <img src="<?= $key['image_url'] ?>" alt="<?= $key['image_url'] ?>"
                                         class="w-16 h-16 rounded-md object-cover">
                                 </td>
                                 <td class="px-6 py-4 font-semibold text-gray-900">
@@ -49,7 +49,8 @@ function myblogs($data)
                                 <td class="px-6 py-4 flex items-center gap-2">
                                     <a href="/blog/edit/<?= $key['slug'] ?>"
                                         class="font-medium text-blue-600 hover:underline">Edit</a>
-                                    <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
+                                    <a href="/blog/deleteblog/<?= $key['slug'] ?>"
+                                        class="font-medium text-red-600 hover:underline">Hapus</a>
                                 </td>
                             </tr>
                         <?php } ?>

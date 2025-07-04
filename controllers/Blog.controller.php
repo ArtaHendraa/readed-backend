@@ -1,8 +1,16 @@
 <?php
 require_once("models/Model.model.php");
 require_once("views/editor.php");
+require_once("views/blog.php");
 class BlogController extends Model
 {
+    public function index()
+    {
+        session_start();
+        $userid = $_SESSION['user_data']['user_id'];
+        $data = $this->getAllById("articles", "user_id", "$userid");
+        blog($data);
+    }
     public function edit($slug)
     {
         session_start();
@@ -34,9 +42,20 @@ class BlogController extends Model
             }
         }
     }
+    public function deleteblog($slug)
+    {
+        session_start();
+        $get_article = $this->getSingleById('articles', "slug", $slug);
+        $userid = $_SESSION['user_data']['user_id'];
+
+        if ($get_article['user_id'] === $userid) {
+            $this->delete('articles', 'slug', $slug);
+            $this->redirect();
+        }
+    }
     private function redirect()
     {
         echo "<script>
-        window.location.replace('/myblogs'); </script>";
+        window.location.replace('/blog'); </script>";
     }
 }
