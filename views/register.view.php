@@ -1,16 +1,10 @@
 <?php
 function register($status = [])
 { ?>
-<?php
+    <?php
     ?>
-<div class="flex justify-center items-center min-h-screen">
-    <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
-
-        <div class="text-center">
-            <h1 class="text-3xl font-bold text-gray-900">Buat Akun Baru</h1>
-            <p class="mt-2 text-sm text-gray-600">Hanya butuh beberapa detik!</p>
-        </div>
-        <div class="p-4 text-sm rounded-lg  <?= !isset($status) ? 'hidden' : 'block' ?> <?= $status['Status'] ? 'text-green-800 border border-green-300 bg-green-50' : 'text-red-800 border border-red-300 bg-red-50' ?>"
+    <div class="bg-white min-h-screen flex items-center justify-center px-4">
+        <div class="p-4 text-sm rounded-lg absolute top-80  <?= !isset($status) ? 'hidden' : 'block' ?> <?= $status['Status'] ? 'text-green-800 border border-green-300 bg-green-50' : 'text-red-800 border border-red-300 bg-red-50' ?>"
             role="alert">
             <div class="flex items-center">
                 <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -21,55 +15,79 @@ function register($status = [])
                 <span class="font-medium"> &nbsp; </span> <?= $status['Pesan'] ?>
             </div>
         </div>
-
-        <form method="post" class="space-y-5">
-
-            <div>
-                <label for="username" class="block mb-2 text-sm font-medium text-gray-700">Username</label>
-                <input type="text" id="username" name="username" placeholder="Pilih username unik"
-                    class="w-full px-4 py-3 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-            </div>
-
-            <div>
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Alamat Email</label>
-                <input type="email" id="email" name="email" placeholder="kamu@email.com"
-                    class="w-full px-4 py-3 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-            </div>
-
-            <div>
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
-                <input type="password" id="password" name="password" placeholder="Minimal 8 karakter"
-                    class="w-full px-4 py-3 text-gray-700 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
-            </div>
-
-            <div class="flex items-start">
-                <div class="flex items-center h-5">
-                    <input id="terms" name="terms" type="checkbox"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500" required>
-                </div>
-                <div class="ml-3 text-sm">
-                    <label for="terms" class="font-light text-gray-600">Saya setuju dengan <a href="#"
-                            class="font-medium text-blue-600 hover:underline">Syarat & Ketentuan</a></label>
-                </div>
-            </div>
-
-            <div>
-                <button type="submit" name="registerBtn"
-                    class="w-full px-4 py-3 mt-2 font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                    Register
-                </button>
-            </div>
-
-            <p class="text-sm text-center text-gray-600">
-                Sudah punya akun?
-                <a href="/login" class="font-medium text-blue-600 hover:underline">Login di sini</a>
+        <main class="w-full max-w-xs text-center">
+            <h1
+                class="text-3xl text-black mb-2 select-none"
+                style="font-family: 'Fredericka the Great', cursive">
+                Readed
+            </h1>
+            <h2 class="font-extrabold text-black text-lg mb-1">Create an account</h2>
+            <p class="text-[10px] mb-4 text-gray-600">
+                Already have an account?
+                <a href="#" class="text-blue-600 hover:underline">Sign in</a>
             </p>
+            <form class="space-y-4" method="POST">
+                <div>
+                    <label for="username" class="sr-only">Username</label>
+                    <input
+                        type="text" id="username" name="username"
+                        placeholder="Username"
+                        class="w-full border border-gray-300 rounded-md px-3 py-2 text-xs placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                        autocomplete="username"
+                        required />
+                </div>
+                <div>
+                    <label for="email" class="sr-only">Email</label>
+                    <input
+                        type="email" id="email" name="email"
+                        placeholder="Email"
+                        class="w-full border border-gray-300 rounded-md px-3 py-2 text-xs placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                        autocomplete="email"
+                        required />
+                </div>
+                <div class="relative">
+                    <label for="password" class="sr-only">Password</label>
+                    <input
+                        type="password" id="password" name="password" placeholder="Password Minimal 8 karakter"
+                        class="w-full border border-gray-300 rounded-md px-3 py-2 pr-8 text-xs placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                        autocomplete="new-password"
+                        required
+                        aria-label="Password" />
+                    <i
+                        class="fas fa-eye-slash absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs cursor-pointer"
+                        onclick="togglePasswordVisibility()"
+                        aria-hidden="true"></i>
+                </div>
+                <label
+                    class="flex items-center space-x-1 text-[10px] text-gray-600 mb-2">
+                    <input
+                        id="terms" name="terms" type="checkbox"
+                        class="w-3 h-3 border border-gray-400 rounded-sm"
+                        required />
+                    <span>Terms of Use Agreement and a Privacy Policy</span>
+                </label>
+                <button
+                    type="submit" name="registerBtn"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white text-[12px] font-semibold rounded-md py-2 shadow-md transition">
+                    Sign up
+                </button>
+            </form>
+        </main>
 
-        </form>
+        <script>
+            function togglePasswordVisibility() {
+                const passwordInput = document.getElementById("password");
+                const toggleIcon = document.querySelector(".fas");
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    toggleIcon.classList.remove("fa-eye-slash");
+                    toggleIcon.classList.add("fa-eye");
+                } else {
+                    passwordInput.type = "password";
+                    toggleIcon.classList.remove("fa-eye");
+                    toggleIcon.classList.add("fa-eye-slash");
+                }
+            }
+        </script>
     </div>
-
-</div>
 <?php }
