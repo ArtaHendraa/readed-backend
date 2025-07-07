@@ -18,6 +18,7 @@ class ProfileController extends Model
     }
     private function checkPassword($curr, $new)
     {
+        // kalau semisal mau lgsg keganti tanpa harus refresh, fetch dlu data pw dari db
         if (password_verify($curr, $_SESSION['user_data']['password'])) {
             $userid = $_SESSION['user_data']['user_id'];
             $new = password_hash($new, PASSWORD_DEFAULT);

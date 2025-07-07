@@ -27,13 +27,15 @@ class LoginController extends Model
             session_start();
             $_SESSION['user_data'] = $check_user;
             $this->status = [
-                "Pesan" => "Berhasil login njeng",
+                "Pesan" => "Berhasil login",
                 "Status" => true
             ];
+            header("Location: /");
+            exit;
             setcookie("username", "$username");
         } else {
             return $this->status = [
-                "Pesan" => "Who the fuck are you?",
+                "Pesan" => "Login gagal",
                 "Status" => false
             ];
         }
