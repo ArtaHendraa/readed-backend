@@ -131,6 +131,26 @@ class ApiController extends Model
             return false;
         }
     }
+    public function category($category)
+    {
+        try {
+            $result = $this->getAllById("articles", "article_type", "$category");
+            if ($result) {
+                echo json_encode($result);
+            } else {
+                http_response_code(404);
+                echo json_encode([
+                    "message" => "Data not found"
+                ]);
+            }
+        } catch (\Throwable $th) {
+            http_response_code(500);
+            echo json_encode([
+                "message" => "Internal server error",
+                "error" => $th->getMessage()
+            ]);
+        }
+    }
     // End Endpoint get each data
 
     private function postCurl($name, $id)

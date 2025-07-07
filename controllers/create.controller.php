@@ -1,12 +1,17 @@
 <?php
 require_once("views/createblog.php");
 require_once("models/Model.model.php");
-session_start();
 class CreateController extends Model
 {
     private $status;
     public function index()
     {
+        $check = new checkUser();
+        $check->check();
+        if (!isset($_SESSION['user_data'])) {
+            header('Location: /login');
+            exit;
+        }
         $get_category = $this->getAll("category");
         if (isset($_POST['createblogBtn'])) {
             $judul = $_POST['article_name'];
