@@ -6,14 +6,24 @@ class BlogController extends Model
 {
     public function index()
     {
-        session_start();
+        $check = new checkUser();
+        $check->check();
+        if (!isset($_SESSION['user_data'])) {
+            header('Location: /login');
+            exit;
+        }
         $userid = $_SESSION['user_data']['user_id'];
         $data = $this->getAllById("articles", "user_id", "$userid");
         blog($data);
     }
     public function edit($slug)
     {
-        session_start();
+        $check = new checkUser();
+        $check->check();
+        if (!isset($_SESSION['user_data'])) {
+            header('Location: /login');
+            exit;
+        }
         $userid = $_SESSION['user_data']['user_id'];
         $query = $this->customQuery("SELECT * FROM articles WHERE user_id='$userid' AND slug='$slug'");
         if (mysqli_num_rows($query) > 0) {
@@ -44,7 +54,6 @@ class BlogController extends Model
     }
     public function deleteblog($slug)
     {
-        session_start();
         $get_article = $this->getSingleById('articles', "slug", $slug);
         $userid = $_SESSION['user_data']['user_id'];
 
@@ -52,6 +61,8 @@ class BlogController extends Model
             $this->delete('articles', 'slug', $slug);
             $img_url = $get_article['image_url'];
             unlink("$img_url");
+            $this->redirect();
+        } else {
             $this->redirect();
         }
     }

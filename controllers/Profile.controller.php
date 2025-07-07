@@ -6,7 +6,12 @@ class ProfileController extends Model
     private $status;
     public function index()
     {
-        session_start();
+        $check = new checkUser();
+        $check->check();
+        if (!isset($_SESSION['user_data'])) {
+            header('Location: /login');
+            exit;
+        }
 
         if (isset($_POST['changePasswordBtn'])) {
             $curr_pw = $_POST['current_password'];
