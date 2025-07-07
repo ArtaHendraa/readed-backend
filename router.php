@@ -24,8 +24,9 @@ class Router
     private function route($param_one, $param_two, $param_three)
     {
         if ($param_one === "") {
-            include_once("views/home.view.php");
-            return home();
+            include_once("controllers/Home.controller.php");
+            $home = new HomeController();
+            return $home->index();
         }
 
         $controllerFile = "controllers/$param_one.controller.php";

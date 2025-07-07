@@ -7,7 +7,7 @@ class CreateController extends Model
     private $status;
     public function index()
     {
-        changeTitle("create");
+        $get_category = $this->getAll("category");
         if (isset($_POST['createblogBtn'])) {
             $judul = $_POST['article_name'];
             $type = $_POST['article_type'];
@@ -22,7 +22,7 @@ class CreateController extends Model
             $this->createBlog($judul,  $type, $target_file, $randomedSlug, $author, $user_id, $filetype);
         }
 
-        createblog($this->status);
+        createblog($this->status, $get_category);
     }
     private function createBlog($judul,  $type, $target_file, $slug, $author, $user_id, $filetype)
     {
@@ -32,12 +32,19 @@ class CreateController extends Model
                 "Pesan" => "Tipe file tidak sesuai"
             ];
         } else {
-            $this->createSpecify("articles", ["user_id", "article_name", "slug", "article_type", "image_url", "status", "author"], ["$user_id", "'$judul'", "'$slug'",  "'$type'", "'$target_file'", "'Draft'", "'$author'"]);
-            move_uploaded_file($_FILES['image_url']['tmp_name'], $target_file);
-            return $this->status = [
-                "Status" => true,
-                "Pesan" => "Blog berhasil dibuat!"
-            ];
+            try {
+                $this->createSpecify("articles", ["user_id", "article_name", "slug", "article_type", "image_url", "status", "author"], ["$user_id", "'$judul'", "'$slug'",  "'$type'", "'$target_file'", "'Draft'", "'$author'"]);
+                move_uploaded_file($_FILES['image_url']['tmp_name'], $target_file);
+                return $this->status = [
+                    "Status" => true,
+                    "Pesan" => "Blog berhasil dibuat!"
+                ];
+            } catch (\Throwable $th) {
+                return $this->status = [
+                    "Status" => false,
+                    "Pesan" => "Terjadi kesalahan"
+                ];
+            }
         }
     }
 }

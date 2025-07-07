@@ -46,9 +46,7 @@ class checkUser extends Model
         session_start();
         $userid = $_SESSION['user_data']['user_id'];
         $query = $this->customQuery("SELECT user_id FROM users where user_id='$userid'");
-        if (mysqli_num_rows($query) > 0) {
-            echo "usernya ada";
-        } else {
+        if (!mysqli_num_rows($query) > 0) {
             echo "usernya dah dihapus";
             session_destroy();
         }

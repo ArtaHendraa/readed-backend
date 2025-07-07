@@ -50,6 +50,8 @@ class BlogController extends Model
 
         if ($get_article['user_id'] === $userid) {
             $this->delete('articles', 'slug', $slug);
+            $img_url = $get_article['image_url'];
+            unlink("$img_url");
             $this->redirect();
         }
     }

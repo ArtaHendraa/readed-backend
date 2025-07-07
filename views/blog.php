@@ -1,66 +1,84 @@
-<?php
-function blog($data)
+<?php function blog($data)
 {
-    if (isset($data)) {
+    // 🔢 Pagination logic
+    // $currentPage = isset($_POST['page']) ? (int)$_POST['page'] : 1;
+    // $perPage = 5;
+    // $totalData = count($data);
+    // $totalPages = ceil($totalData / $perPage);
+    // $currentPage = max(1, min($currentPage, $totalPages));
+
+    // $startIndex = ($currentPage - 1) * $perPage;
+    // $pagedData = array_slice($data, $startIndex, $perPage);
 ?>
-        <div class="bg-white rounded-xl shadow-lg p-6 w-2/3 mx-auto mt-10">
+    <main class="flex h-screen">
+        <?php sidebar(); ?>
+        <section class="ml-[300px] flex-1 overflow-y-auto h-screen">
+            <?php navbar("My Blogs"); ?>
+            <?php if ($data /* ganti jadi totaldata jika mau bikin pagination */ > 0) { ?>
+                <div class="w-full p-6">
+                    <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white">
+                        <table class="w-full text-xs text-left text-gray-600">
+                            <thead class="text-[10px] text-gray-500 uppercase bg-white border-b border-gray-200">
+                                <tr>
+                                    <th class="px-4 py-3 font-extrabold">THUMBNAIL</th>
+                                    <th class="px-4 py-3 font-extrabold">TITLE</th>
+                                    <th class="px-4 py-3 font-extrabold">SLUG</th>
+                                    <th class="px-4 py-3 font-extrabold">CATEGORY</th>
+                                    <th class="px-4 py-3 font-extrabold">CREATED AT</th>
+                                    <th class="px-4 py-3 font-extrabold">STATUS</th>
+                                    <th class="px-4 py-3 font-extrabold">ACTIONS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($data /* pke $pageddata klo mau ada pagination */ as $key): ?>
+                                    <tr>
+                                        <td class="px-4 py-3"><img src="<?= $key['image_url'] ?>"
+                                                class="w-16 h-16 rounded-md object-cover"></td>
+                                        <td class="px-4 py-3"><?= $key['article_name'] ?></td>
+                                        <td class="px-4 py-3"><?= $key['slug'] ?></td>
+                                        <td class="px-4 py-3"><?= $key['article_type'] ?></td>
+                                        <td class="px-4 py-3"><?= $key['created_at'] ?></td>
+                                        <td class="px-4 py-3"><span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800"><?= $key['status'] ?></span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="inline-flex space-x-2 items-center">
+                                                <a href="/blog/edit/<?= $key['slug'] ?>"
+                                                    class="bg-[#2a2aff] text-white p-2 rounded-sm hover:bg-[#1a1ad1] transition inline-flex items-center justify-center">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <a href="/blog/deleteblog/<?= $key['slug'] ?>"
+                                                    class="bg-[#ff0066] text-white p-2 rounded-sm hover:bg-[#cc0052] transition inline-flex items-center justify-center">
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
 
-            <h2 class="text-2xl font-bold text-gray-800 mb-6">Daftar Artikel</h2>
+                    <!-- 🔁 Pagination -->
+                    <!-- <form method="POST" class="flex justify-center mt-6 space-x-2">
+                        <php for ($i = 1; $i <= $totalPages; $i++): ?>
+                            <button type="submit" name="page" value="< = $i ?>"
+                                class="px-3 py-1 rounded < = ($i == $currentPage) ? 'bg-blue-600 text-white' : 'bg-gray-200 hover:bg-gray-300' ?>">
+                                <= $i ?>
+                            </button>
+                        < php endfor; ?>
+                    </form> -->
 
-            <div class="overflow-x-auto">
-                <table class="min-w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">Gambar</th>
-                            <th scope="col" class="px-6 py-3">Judul</th>
-                            <th scope="col" class="px-6 py-3">Status</th>
-                            <th scope="col" class="px-6 py-3">Slug</th>
-                            <th scope="col" class="px-6 py-3">Category</th>
-                            <th scope="col" class="px-6 py-3">Tanggal Publish</th>
-                            <th scope="col" class="px-6 py-3">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($data as $key) { ?>
-                            <tr class="bg-white border-b hover:bg-gray-50">
-                                <td class="p-4">
-                                    <img src="<?= $key['image_url'] ?>" alt="<?= $key['image_url'] ?>"
-                                        class="w-16 h-16 rounded-md object-cover">
-                                </td>
-                                <td class="px-6 py-4 font-semibold text-gray-900">
-                                    <?= $key['article_name'] ?>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                        <?= $key['status'] ?>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 font-mono text-gray-600">
-                                    <?= $key['slug'] ?>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <?= $key['article_type'] ?>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <?= $key['created_at'] ?>
-                                </td>
-                                <td class="px-6 py-4 flex items-center gap-2">
-                                    <a href="/blog/edit/<?= $key['slug'] ?>"
-                                        class="font-medium text-blue-600 hover:underline">Edit</a>
-                                    <a href="/blog/deleteblog/<?= $key['slug'] ?>"
-                                        class="font-medium text-red-600 hover:underline">Hapus</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-<?php } else {
-        echo "you don't have any blog :(";
-    }
-} ?>
+                </div>
+            <?php } else { ?>
+                <div class="mt-[150px]">
+                    <img src="/public/assets/error.jpg" alt="error image" width="200" class="justify-self-center">
+                    <h1 class="text-center font-semibold text-2xl">You don't have any blog :(</h1>
+                    <p class="text-center mt-2">
+                        <a href="/create" class="underline text-blue-900">Create here to create a blog</a>
+                    </p>
+                </div>
+            <?php } ?>
+        </section>
+    </main>
+<?php } ?>

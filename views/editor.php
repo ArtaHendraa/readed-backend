@@ -1,45 +1,56 @@
 <?php
-
+include_once("views/components/sidebar.php");
+include_once("views/components/navbar.php");
 function editor($data)
 { ?>
-    <style>
-        h1 {
-            font-size: 2em;
-            /* Ukuran standar h1 */
-            font-weight: bold;
-            display: block;
-            margin-block-start: 0.67em;
-            margin-block-end: 0.67em;
-        }
-    </style>
-    <!-- Include stylesheet -->
-    <!-- Create the editor container -->
-    <div class="w-2/3 mx-auto mt-10">
-        <h1><?= $data['article_name'] ?></h1>
-        <!-- <img src="/<?= $data['image_url'] ?>" class="aspect-video object-cover" alt=""> -->
-        <form action="" method="post">
-            <div id="editor"><?= $data['content'] ?></div>
-            <!-- Hidden input to store the editor content -->
+    <!-- <form action="" method="post">
+            <div id="editor"></div>
             <input type="hidden" name="postnya" id="postnya">
             <button class="mt-5 bg-blue-600 px-4 py-2 rounded text-white" type="submit" name="create_data">Submit</button>
             <button class="mt-5 border border-blue-600 px-4 py-2 rounded text-blue-600" type="submit"
                 name="create_draft">Save & Draft</button>
-        </form>
-    </div>
+        </form> -->
+    <?php sidebar() ?>
+    <section class="ml-[300px] flex-1 overflow-y-auto h-screen">
+        <?php navbar("Edit Blog"); ?>
+        <div class="space-y-10">
+            <div class="h-[2000px]">
+                <!-- Form -->
+                <div class="space-y-4 p-6 rounded">
+                    <form action="" method="post">
+                        <!-- Title Input -->
+                        <input type="text" disabled value="<?= $data['article_name'] ?>"
+                            class=" w-full border-2 font-semibold border-[#d1d9e6] mb-4 rounded p-4 focus:outline-none" />
 
-    <!-- Include the Quill library -->
+                        <!-- Rich Text Editor -->
+                        <div class="border border-[#d1d9e6] rounded">
+                            <div id="editor" class=""><?= $data['content'] ?></div>
+                            <input type="hidden" name="postnya" id="postnya">
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="flex gap-4 mt-4">
+                            <button class="bg-blue-700 text-white px-6 py-2 rounded" type="submit" name="create_data">
+                                Save & Publish
+                            </button>
+                            <button class="border border text-blue-700 px-6 py-2 rounded" type="submit" name="create_draft">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
-    <!-- Initialize Quill editor -->
     <script>
         let quill = new Quill('#editor', {
             theme: 'snow'
         });
-
-        // Submit handler to set the hidden input value with editor content
         document.querySelector('form').addEventListener('submit', function() {
             let html = quill.root.innerHTML;
-            document.getElementById('postnya').value = html; // Assign editor content to hidden input
+            document.getElementById('postnya').value = html;
         });
     </script>
 
